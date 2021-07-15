@@ -22,7 +22,7 @@ jobs:
     name: "Build"
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
     - name: Checkout code
@@ -35,7 +35,7 @@ jobs:
     - name: Running gradle build
       uses: eskatos/gradle-command-action@v1.3.3
       with:
-        arguments: build --stacktrace
+        arguments: build
 
   release:
     needs: [verify-wrapper, gradle]
