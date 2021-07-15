@@ -35,7 +35,7 @@ jobs:
     - name: Running gradle build
       uses: eskatos/gradle-command-action@v1.3.3
       with:
-        arguments: build
+        arguments: build --stacktrace
 
   release:
     needs: [verify-wrapper, gradle]
