@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "id.walt.servicematrix"
-version = "1.0.0"
+version = "1.0.1"
 
 repositories {
     mavenCentral()
@@ -53,6 +53,10 @@ publishing {
             }
         }
     }
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions.jvmTarget = "13"
 }
 
 jacoco.toolVersion = "0.8.7"
