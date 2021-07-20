@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.0.1] - 2021-07-20
+
 ## [1.0.0] - 2021-07-20
 
 ## [1.0.0] - 2021-07-20
@@ -12,7 +14,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/service-matrix/compare/1.0.0...HEAD
+[Unreleased]: https://github.com/walt-id/service-matrix/compare/1.0.1...HEAD
+
+[1.0.1]: https://github.com/walt-id/service-matrix/compare/1.0.0...1.0.1
 
 [1.0.0]: https://github.com/walt-id/service-matrix/compare/1.0.0...1.0.0
 
