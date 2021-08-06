@@ -45,11 +45,14 @@ publishing {
 
     repositories {
         maven {
-            url = uri("https://maven.letstrust.io/repository/waltid/")
+            url = uri("https://maven.walt.id/repository/waltid/")
+
+            val secretMavenUsername = File("secret_maven_username.txt").readLines()[0]
+            val secretMavenPassword = File("secret_maven_password.txt").readLines()[0]
 
             credentials {
-                username = "letstrust-build"
-                password = "naidohTeiraG9ouzoo0"
+                username = secretMavenUsername
+                password = secretMavenPassword
             }
         }
     }
