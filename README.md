@@ -13,7 +13,18 @@ As of commit ff82ae5: 100% test coverage according to the JaCoCo coverage report
 
 ### Setup
 
-Add the dependency using Maven or Gradle.
+Add the dependency using Gradle:
+
+    implementation("id.walt.servicematrix:WaltID-ServiceMatrix:1.0.1")
+    
+or Maven:
+
+    <dependency>
+        <groupId>id.walt.servicematrix</groupId>
+        <artifactId>WaltID-ServiceMatrix</artifactId>
+        <version>1.0.1</version>
+    </dependency>
+        
 
 ### Create your first service
 
