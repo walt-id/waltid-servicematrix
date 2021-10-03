@@ -1,11 +1,12 @@
 plugins {
     jacoco
     kotlin("jvm") version "1.5.20"
+    application
     `maven-publish`
 }
 
 group = "id.walt.servicematrix"
-version = "1.0.1"
+version = "1.0.1-JAVA8"
 
 repositories {
     mavenCentral()
@@ -59,7 +60,18 @@ publishing {
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    kotlinOptions.jvmTarget = "13"
+    kotlinOptions.jvmTarget = "11"
+}
+
+tasks {
+    compileKotlin {
+        sourceCompatibility = JavaVersion.VERSION_11.toString()
+        targetCompatibility = JavaVersion.VERSION_11.toString()
+
+        kotlinOptions {
+            jvmTarget = "11"
+        }
+    }
 }
 
 jacoco.toolVersion = "0.8.7"
