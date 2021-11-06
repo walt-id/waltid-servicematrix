@@ -1,6 +1,8 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     jacoco
-    kotlin("jvm") version "1.5.20"
+    kotlin("jvm") version "1.5.31"
     `maven-publish`
 }
 
@@ -13,18 +15,18 @@ repositories {
 
 dependencies {
     // Kotlin
-    implementation(kotlin("stdlib"))
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.5.31")
 
     // Reflection
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.5.20")
 
     // Configuration
-    implementation("com.sksamuel.hoplite:hoplite-core:1.4.3")
-    implementation("com.sksamuel.hoplite:hoplite-hocon:1.4.3")
+    implementation("com.sksamuel.hoplite:hoplite-core:1.4.11")
+    implementation("com.sksamuel.hoplite:hoplite-hocon:1.4.11")
 
     // Testing
-    testImplementation("io.kotest:kotest-runner-junit5:4.6.0")
-    testImplementation("io.kotest:kotest-assertions-core:4.6.0")
+    testImplementation("io.kotest:kotest-runner-junit5:4.6.3")
+    testImplementation("io.kotest:kotest-assertions-core:4.6.3")
 }
 
 tasks.withType<Test> {
@@ -49,8 +51,16 @@ publishing {
 
             val usernameFile = File("secret_maven_username.txt")
             val passwordFile = File("secret_maven_password.txt")
-            val secretMavenUsername = System.getenv()["MAVEN_USERNAME"] ?: if (usernameFile.isFile) { usernameFile.readLines()[0] } else { "" }
-            val secretMavenPassword = System.getenv()["MAVEN_PASSWORD"] ?: if (passwordFile.isFile) { passwordFile.readLines()[0] } else { "" }
+            val secretMavenUsername = System.getenv()["MAVEN_USERNAME"] ?: if (usernameFile.isFile) {
+                usernameFile.readLines()[0]
+            } else {
+                ""
+            }
+            val secretMavenPassword = System.getenv()["MAVEN_PASSWORD"] ?: if (passwordFile.isFile) {
+                passwordFile.readLines()[0]
+            } else {
+                ""
+            }
 
             credentials {
                 username = secretMavenUsername
@@ -60,7 +70,7 @@ publishing {
     }
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "13"
 }
 
