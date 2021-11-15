@@ -37,7 +37,7 @@ publishing {
     publications {
         create<MavenPublication>("mavenJava") {
             pom {
-                name.set("Walt.ID Service-Matrix")
+                name.set("waltid-servicematrix-java11")
                 description.set("Kotlin/Java library for service registration.")
                 url.set("https://walt.id")
             }
@@ -71,7 +71,7 @@ publishing {
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "13"
+    kotlinOptions.jvmTarget = "11"
 }
 
 jacoco.toolVersion = "0.8.7"

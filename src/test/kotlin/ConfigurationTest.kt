@@ -3,6 +3,7 @@ import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.engine.spec.tempfile
 import io.kotest.matchers.shouldBe
+import java.security.Provider
 
 class ConfigurationTest : StringSpec({
     val conf1 = tempfile(suffix = ".conf").apply {
@@ -79,6 +80,13 @@ class ConfigurationTest : StringSpec({
             println(service.someInfoText())
         }
     }
+
+    "Simple object" {
+        val service = SomeSimpleObjectWithConfig.getService<SomeSimpleObjectWithConfig>()
+
+        service.loadConf(conf1.absolutePath)
+        service.simpleMethodCall()
+    }
 })
 
 
@@ -112,4 +120,22 @@ class ConfigurationTestServiceImpl2(configurationPath: String) : ConfigurationTe
 
 class ConfigurationTestServiceImpl3() : ConfigurationTestService() {
     override fun someInfoText(): String = configuration.hashCode().toString()
+}
+
+
+object SomeSimpleObjectWithConfig : BaseObject() {
+    data class Configuration1(val env: String, val thingsForConfiguration1: ConfigurationTestServiceImpl1.ThingsForConfiguration1) : ServiceConfiguration
+
+    //fun getService(): SomeSimpleObjectWithConfig = getService()
+
+    override var configuration: Configuration1? = null
+
+    fun loadConf(configurationPath: String) {
+       configuration = fromConfiguration(configurationPath)
+    }
+
+    fun simpleMethodCall() {
+        println( "This is Implementation ${configuration?.thingsForConfiguration1?.name}")
+    }
+
 }

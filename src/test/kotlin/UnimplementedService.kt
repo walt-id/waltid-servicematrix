@@ -1,6 +1,5 @@
 import id.walt.servicematrix.BaseService
 import id.walt.servicematrix.ServiceProvider
-import id.walt.servicematrix.ServiceRegistry
 import id.walt.servicematrix.exceptions.UnimplementedServiceException
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec

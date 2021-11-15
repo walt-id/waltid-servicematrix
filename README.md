@@ -1,4 +1,4 @@
-# ServiceMatrix, by WaltID
+# ServiceMatrix for Java11, by walt.id
 
 _Interchange service-implementation & service-configuration at runtime (using dynamic dependency injection), for
 Kotlin._
@@ -15,13 +15,13 @@ As of commit ff82ae5: 100% test coverage according to the JaCoCo coverage report
 
 Add the dependency using Gradle:
 
-    implementation("id.walt.servicematrix:WaltID-ServiceMatrix:1.0.1")
+    implementation("id.walt.servicematrix:waltid-servicematrix-java11:1.0.1")
     
 or Maven:
 
     <dependency>
         <groupId>id.walt.servicematrix</groupId>
-        <artifactId>WaltID-ServiceMatrix</artifactId>
+        <artifactId>waltid-servicematrix-java11</artifactId>
         <version>1.0.1</version>
     </dependency>
         

@@ -1,2 +1,2 @@
-rootProject.name = "WaltID-ServiceMatrix"
+rootProject.name = "waltid-servicematrix-java11"
 
