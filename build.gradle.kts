@@ -71,6 +71,8 @@ publishing {
 }
 
 tasks.withType<KotlinCompile> {
+    sourceCompatibility = JavaVersion.VERSION_11.toString()
+    targetCompatibility = JavaVersion.VERSION_11.toString()
     kotlinOptions.jvmTarget = "11"
 }
 
