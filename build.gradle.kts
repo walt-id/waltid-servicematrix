@@ -37,7 +37,7 @@ publishing {
     publications {
         create<MavenPublication>("mavenJava") {
             pom {
-                name.set("Walt.ID Service-Matrix")
+                name.set("waltid-servicematrix")
                 description.set("Kotlin/Java library for service registration.")
                 url.set("https://walt.id")
             }
