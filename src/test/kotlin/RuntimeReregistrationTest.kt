@@ -16,23 +16,22 @@ class RuntimeReregistrationTest : StringSpec({
 
         service.function1() shouldBe 2
     }
-})
+}) {
+    abstract class ReregistrationTestService : BaseService() {
+        override val implementation get() = serviceImplementation<ReregistrationTestService>()
 
+        open fun function1(): Int = implementation.function1()
 
-abstract class ReregistrationTestService : BaseService() {
-    override val implementation get() = serviceImplementation<ReregistrationTestService>()
-
-    open fun function1(): Int = implementation.function1()
-
-    companion object : ServiceProvider {
-        override fun getService() = object : ReregistrationTestService() {}
+        companion object : ServiceProvider {
+            override fun getService() = object : ReregistrationTestService() {}
+        }
     }
-}
 
-class ReregistrationTestServiceImpl1 : ReregistrationTestService() {
-    override fun function1() = 1
-}
+    class ReregistrationTestServiceImpl1 : ReregistrationTestService() {
+        override fun function1() = 1
+    }
 
-class ReregistrationTestServiceImpl2 : ReregistrationTestService() {
-    override fun function1() = 2
+    class ReregistrationTestServiceImpl2 : ReregistrationTestService() {
+        override fun function1() = 2
+    }
 }

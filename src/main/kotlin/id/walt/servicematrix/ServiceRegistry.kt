@@ -2,6 +2,7 @@ package id.walt.servicematrix
 
 import id.walt.servicematrix.exceptions.UnimplementedServiceException
 import kotlin.reflect.KClass
+import kotlin.reflect.full.companionObjectInstance
 
 /**
  * Mapping of services and their respective service-implementations
@@ -21,7 +22,7 @@ object ServiceRegistry {
     }
 
     /**
-     * Register a implementation for a specific service
+     * Register an implementation for a specific service
      * Example: `registerService(MyCustomImplementation(), MyCustomService::class)`
      */
     fun registerService(serviceImplementation: BaseService, serviceType: KClass<out BaseService>) {
@@ -29,9 +30,30 @@ object ServiceRegistry {
     }
 
     /**
-     * Get a service from the service registry
+     * Get the current service implementation for this base service from the service registry
      * Example: `getService<MyCustomService>()`
      */
-    inline fun <reified Service : BaseService> getService(): Service =
-        (services[Service::class] ?: throw UnimplementedServiceException(Service::class.qualifiedName)) as Service
+    inline fun <reified Service : BaseService> getService(): Service {
+        return getService(Service::class)
+    }
+
+    /**
+     * Get the current service implementation for this base service from the service registry
+     * Example: `getService(MyCustomService::class)`
+     */
+    @Suppress("UNCHECKED_CAST")
+    fun <Service : BaseService> getService(serviceClass: KClass<Service>): Service {
+        return (services[serviceClass]
+            ?: (((serviceClass.companionObjectInstance
+                ?: throw UnimplementedServiceException(
+                    serviceClass.qualifiedName,
+                    "and no ServiceProvider was defined for the service?"
+                )) as ServiceProvider)
+
+                .defaultImplementation()?.also { registerService(it, serviceClass) }
+
+                ?: throw UnimplementedServiceException(
+                    serviceClass.qualifiedName, "and no default service was defined in ServiceProvider"
+                ))) as Service
+    }
 }

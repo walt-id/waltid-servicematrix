@@ -13,26 +13,25 @@ class ServiceRegistryTests : StringSpec({
         ServiceRegistry.registerService(ServiceRegistryTestServiceImpl2(), ServiceRegistryTestService::class)
         ServiceRegistry.getService<ServiceRegistryTestService>().function1() shouldBe 2
     }
-})
+}) {
+    abstract class ServiceRegistryTestService : BaseService() {
+        override val implementation get() = serviceImplementation<ServiceRegistryTestService>()
 
+        open fun function1(): Int = implementation.function1()
+        open fun function2(): String = implementation.function2()
 
-abstract class ServiceRegistryTestService : BaseService() {
-    override val implementation get() = serviceImplementation<ServiceRegistryTestService>()
-
-    open fun function1(): Int = implementation.function1()
-    open fun function2(): String = implementation.function2()
-
-    companion object : ServiceProvider {
-        override fun getService() = object : ServiceRegistryTestService() {}
+        companion object : ServiceProvider {
+            override fun getService() = object : ServiceRegistryTestService() {}
+        }
     }
-}
 
-class ServiceRegistryTestServiceImpl1 : ServiceRegistryTestService() {
-    override fun function1() = 1
-    override fun function2() = "Impl 1"
-}
+    class ServiceRegistryTestServiceImpl1 : ServiceRegistryTestService() {
+        override fun function1() = 1
+        override fun function2() = "Impl 1"
+    }
 
-class ServiceRegistryTestServiceImpl2 : ServiceRegistryTestService() {
-    override fun function1() = 2
-    override fun function2() = "Impl 2"
+    class ServiceRegistryTestServiceImpl2 : ServiceRegistryTestService() {
+        override fun function1() = 2
+        override fun function2() = "Impl 2"
+    }
 }

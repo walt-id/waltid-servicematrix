@@ -1,7 +1,6 @@
 import id.walt.servicematrix.BaseService
 import id.walt.servicematrix.ServiceMatrix
 import id.walt.servicematrix.ServiceProvider
-import id.walt.servicematrix.ServiceRegistry
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.engine.spec.tempfile
 import io.kotest.matchers.shouldBe
@@ -35,7 +34,6 @@ class ServiceMatrixTest : StringSpec({
         service.function1() shouldBe 2
     }
 })
-
 
 abstract class ServiceMatrixTestService : BaseService() {
     override val implementation get() = serviceImplementation<ServiceMatrixTestService>()

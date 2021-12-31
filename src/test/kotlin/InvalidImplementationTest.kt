@@ -2,6 +2,7 @@ import id.walt.servicematrix.BaseService
 import id.walt.servicematrix.ServiceMatrix
 import id.walt.servicematrix.ServiceProvider
 import id.walt.servicematrix.ServiceRegistry
+import id.walt.servicematrix.exceptions.NotValidBaseServiceException
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.engine.spec.tempfile
@@ -31,8 +32,8 @@ class InvalidInstantiationRegistrationTest : StringSpec({
         )
     }
 
-    "Registering InvalidInstantiationTestServiceImpl1 should throw ClassCastException" {
-        shouldThrow<ClassCastException> {
+    "Registering InvalidInstantiationTestServiceImpl1 should throw NotValidBaseServiceException" {
+        shouldThrow<NotValidBaseServiceException> {
             ServiceMatrix(file1.absolutePath)
         }
     }
@@ -43,13 +44,12 @@ class InvalidInstantiationRegistrationTest : StringSpec({
             service.function1()
         }
     }
-    "Registering InvalidInstantiationTestService2 should throw ClassCastException" {
-        shouldThrow<ClassCastException> {
+    "Registering InvalidInstantiationTestService2 should throw NotValidBaseServiceException" {
+        shouldThrow<NotValidBaseServiceException> {
             ServiceMatrix(file3.absolutePath)
         }
     }
 })
-
 
 abstract class InvalidInstantiationTestService : BaseService() {
     override val implementation get() = serviceImplementation<InvalidInstantiationTestService>()
@@ -65,7 +65,7 @@ abstract class InvalidInstantiationTestService : BaseService() {
 class InvalidInstantiationTestServiceImpl1
 
 // 2
-class InvalidInstantiationTestServiceImpl2: BaseService() {
+class InvalidInstantiationTestServiceImpl2 : BaseService() {
     override val implementation: BaseService
         get() = throw Error("this error will never be thrown anyways")
 }
@@ -73,7 +73,8 @@ class InvalidInstantiationTestServiceImpl2: BaseService() {
 // 3
 abstract class InvalidInstantiationTestService2 {
     @Suppress("CAST_NEVER_SUCCEEDS")
-    val implementation get() = ServiceRegistry.getService<BaseService>() as InvalidInstantiationTestService2
+    val implementation
+        get() = ServiceRegistry.getService<BaseService>() as InvalidInstantiationTestService2
 
     open fun function1(): Int = implementation.function1()
 

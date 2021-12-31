@@ -1,5 +1,7 @@
 package id.walt.servicematrix
 
+import id.walt.servicematrix.exceptions.NotValidBaseServiceException
+import id.walt.servicematrix.exceptions.ServiceNotFoundException
 import id.walt.servicematrix.utils.ReflectionUtils.getKClassByName
 import java.io.File
 import java.util.*
@@ -33,7 +35,7 @@ class ServiceMatrix() {
 
     private fun createImplementationInstance(implementationClass: String): BaseService =
         getKClassByName(implementationClass).createInstance() as? BaseService
-            ?: throw ClassCastException("$implementationClass is not a valid BaseService")
+            ?: throw NotValidBaseServiceException(implementationClass)
 
     private fun createConfiguredImplementationInstance(
         implementationClass: String,
@@ -46,7 +48,11 @@ class ServiceMatrix() {
      */
     fun registerServiceDefinitions() {
         serviceList.forEach { (implementationString, serviceString) ->
-            val service: KClass<out BaseService> = getKClassByName(serviceString) as KClass<out BaseService>
+            val service: KClass<out BaseService> =
+                runCatching { getKClassByName(serviceString) as KClass<out BaseService> }.getOrElse {
+                    throw ServiceNotFoundException(serviceString)
+                }
+
             val implementation = when {
                 implementationString.contains(':') -> {
                     implementationString.split(':').let { splittedImplementationString ->
