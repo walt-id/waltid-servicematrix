@@ -30,7 +30,7 @@ abstract class BaseService {
      * Wrapper around ServiceRegistry.getService()
      * @see ServiceRegistry.getService
      */
-    inline fun <reified Service : BaseService> serviceImplementation(): Service = ServiceRegistry.getService()
+    inline fun <reified Service : BaseService> serviceImplementation() = ServiceRegistry.getService<Service>()
 
     /**
      * Inject configuration
