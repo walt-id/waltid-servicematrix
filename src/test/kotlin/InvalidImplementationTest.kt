@@ -2,6 +2,7 @@ import id.walt.servicematrix.BaseService
 import id.walt.servicematrix.ServiceMatrix
 import id.walt.servicematrix.ServiceProvider
 import id.walt.servicematrix.ServiceRegistry
+import id.walt.servicematrix.exceptions.NotValidBaseServiceException
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.engine.spec.tempfile
@@ -31,8 +32,8 @@ class InvalidInstantiationRegistrationTest : StringSpec({
         )
     }
 
-    "Registering InvalidInstantiationTestServiceImpl1 should throw ClassCastException" {
-        shouldThrow<ClassCastException> {
+    "Registering InvalidInstantiationTestServiceImpl1 should throw NotValidBaseServiceException" {
+        shouldThrow<NotValidBaseServiceException> {
             ServiceMatrix(file1.absolutePath)
         }
     }
@@ -43,13 +44,12 @@ class InvalidInstantiationRegistrationTest : StringSpec({
             service.function1()
         }
     }
-    "Registering InvalidInstantiationTestService2 should throw ClassCastException" {
-        shouldThrow<ClassCastException> {
+    "Registering InvalidInstantiationTestService2 should throw NotValidBaseServiceException" {
+        shouldThrow<NotValidBaseServiceException> {
             ServiceMatrix(file3.absolutePath)
         }
     }
 })
-
 
 abstract class InvalidInstantiationTestService : BaseService() {
     override val implementation get() = serviceImplementation<InvalidInstantiationTestService>()
