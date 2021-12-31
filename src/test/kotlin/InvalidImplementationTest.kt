@@ -65,7 +65,7 @@ abstract class InvalidInstantiationTestService : BaseService() {
 class InvalidInstantiationTestServiceImpl1
 
 // 2
-class InvalidInstantiationTestServiceImpl2: BaseService() {
+class InvalidInstantiationTestServiceImpl2 : BaseService() {
     override val implementation: BaseService
         get() = throw Error("this error will never be thrown anyways")
 }
@@ -73,7 +73,8 @@ class InvalidInstantiationTestServiceImpl2: BaseService() {
 // 3
 abstract class InvalidInstantiationTestService2 {
     @Suppress("CAST_NEVER_SUCCEEDS")
-    val implementation get() = ServiceRegistry.getService<BaseService>() as InvalidInstantiationTestService2
+    val implementation
+        get() = ServiceRegistry.getService<BaseService>() as InvalidInstantiationTestService2
 
     open fun function1(): Int = implementation.function1()
 
