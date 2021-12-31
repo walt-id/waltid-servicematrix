@@ -17,26 +17,25 @@ class SimpleRegistrationTest : StringSpec({
     "SimpleTestService should now be implemented by Implementation2" {
         SimpleTestService.getService().function1() shouldBe 2
     }
-})
+}) {
+    abstract class SimpleTestService : BaseService() {
+        override val implementation get() = serviceImplementation<SimpleTestService>()
 
+        open fun function1(): Int = implementation.function1()
+        open fun function2(): String = implementation.function2()
 
-abstract class SimpleTestService : BaseService() {
-    override val implementation get() = serviceImplementation<SimpleTestService>()
-
-    open fun function1(): Int = implementation.function1()
-    open fun function2(): String = implementation.function2()
-
-    companion object : ServiceProvider {
-        override fun getService() = object : SimpleTestService() {}
+        companion object : ServiceProvider {
+            override fun getService() = object : SimpleTestService() {}
+        }
     }
-}
 
-class SimpleTestServiceImpl1 : SimpleTestService() {
-    override fun function1() = 1
-    override fun function2() = "Impl 1"
-}
+    class SimpleTestServiceImpl1 : SimpleTestService() {
+        override fun function1() = 1
+        override fun function2() = "Impl 1"
+    }
 
-class SimpleTestServiceImpl2 : SimpleTestService() {
-    override fun function1() = 2
-    override fun function2() = "Impl 2"
+    class SimpleTestServiceImpl2 : SimpleTestService() {
+        override fun function1() = 2
+        override fun function2() = "Impl 2"
+    }
 }
