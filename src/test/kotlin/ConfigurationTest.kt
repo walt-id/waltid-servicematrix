@@ -7,25 +7,25 @@ import io.kotest.matchers.shouldBe
 class ConfigurationTest : StringSpec({
     val conf1 = tempfile(suffix = ".conf").apply {
         writeText(
-        """
-        env: "staging"
-        
-        thingsForConfiguration1: {
-            name: "Implementation Nr. 1"
-        }
-        """.trimIndent()
+            """
+            env: "staging"
+            
+            thingsForConfiguration1: {
+                name: "Implementation Nr. 1"
+            }
+            """.trimIndent()
         )
     }
 
     val conf2 = tempfile(suffix = ".conf").apply {
         writeText(
-        """
-        env: production
+            """
+            env: production
         
-        someConfig2Things: {
-            id: 2
-        }
-        """.trimIndent()
+            someConfig2Things: {
+                id: 2
+            }
+            """.trimIndent()
         )
     }
 
@@ -81,7 +81,6 @@ class ConfigurationTest : StringSpec({
     }
 })
 
-
 abstract class ConfigurationTestService : BaseService() {
     override val implementation get() = serviceImplementation<ConfigurationTestService>()
 
@@ -110,6 +109,6 @@ class ConfigurationTestServiceImpl2(configurationPath: String) : ConfigurationTe
     override fun someInfoText(): String = "This is Implementation ${configuration.someConfig2Things.id}"
 }
 
-class ConfigurationTestServiceImpl3() : ConfigurationTestService() {
+class ConfigurationTestServiceImpl3 : ConfigurationTestService() {
     override fun someInfoText(): String = configuration.hashCode().toString()
 }
