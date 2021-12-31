@@ -48,7 +48,11 @@ class ServiceMatrix() {
      */
     fun registerServiceDefinitions() {
         serviceList.forEach { (implementationString, serviceString) ->
-            val service: KClass<out BaseService> = getKClassByName(serviceString) as KClass<out BaseService>
+            val service: KClass<out BaseService> =
+                runCatching { getKClassByName(serviceString) as KClass<out BaseService> }.getOrElse {
+                    throw ServiceNotFoundException(serviceString)
+                }
+
             val implementation = when {
                 implementationString.contains(':') -> {
                     implementationString.split(':').let { splittedImplementationString ->
