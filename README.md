@@ -78,6 +78,22 @@ ServiceMatrixTestService=ServiceMatrixTestServiceImpl1
 ServiceMatrix("service-matrix.properties")
 ```
 
+### Define a *default implementation* in code
+Without needing any config file! (extremely useful when using your software as a dependency)
+```kotlin
+abstract class SimpleTestService : BaseService() {
+override val implementation get() = serviceImplementation<SimpleTestService>()
+
+    open fun function1(): Int = implementation.function1()
+    open fun function2(): String = implementation.function2()
+
+    companion object : ServiceProvider {
+        override fun getService() = object : SimpleTestService() {}
+        override fun defaultImplementation() = SimpleTestServiceImpl1()
+    }
+}
+```
+
 ### Want your implementation to have configuration too?
 
 Your new service implementation:
