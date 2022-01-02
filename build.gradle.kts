@@ -2,12 +2,12 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     jacoco
-    kotlin("jvm") version "1.5.31"
+    kotlin("jvm") version "1.6.10"
     `maven-publish`
 }
 
 group = "id.walt.servicematrix"
-version = "1.0.1"
+version = "1.1.0"
 
 repositories {
     mavenCentral()
@@ -21,12 +21,12 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.5.20")
 
     // Configuration
-    implementation("com.sksamuel.hoplite:hoplite-core:1.4.11")
-    implementation("com.sksamuel.hoplite:hoplite-hocon:1.4.11")
+    implementation("com.sksamuel.hoplite:hoplite-core:1.4.16")
+    implementation("com.sksamuel.hoplite:hoplite-hocon:1.4.16")
 
     // Testing
-    testImplementation("io.kotest:kotest-runner-junit5:4.6.3")
-    testImplementation("io.kotest:kotest-assertions-core:4.6.3")
+    testImplementation("io.kotest:kotest-runner-junit5:5.0.2")
+    testImplementation("io.kotest:kotest-assertions-core:5.0.3")
 }
 
 tasks.withType<Test> {
@@ -78,6 +78,6 @@ jacoco.toolVersion = "0.8.7"
 
 tasks.jacocoTestReport {
     reports {
-        xml.isEnabled = true
+        xml.required.set(true)
     }
 }
