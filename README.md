@@ -15,14 +15,14 @@ As of commit ff82ae5: 100% test coverage according to the JaCoCo coverage report
 
 Add the dependency using Gradle:
 
-    implementation("id.walt.servicematrix:waltid-servicematrix:1.0.1")
+    implementation("id.walt.servicematrix:waltid-servicematrix:1.1.0")
     
 or Maven:
 
     <dependency>
         <groupId>id.walt.servicematrix</groupId>
         <artifactId>waltid-servicematrix</artifactId>
-        <version>1.0.1</version>
+        <version>1.1.0</version>
     </dependency>
         
 
