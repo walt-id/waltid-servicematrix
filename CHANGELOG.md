@@ -6,8 +6,10 @@ All notable changes to this project will be documented in this file.
 
 ## [1.1.1] - 2022-05-08
 
-- Upgraded to next major version of hoplite (1.4.16 -> 2.1.2)
-- bumped the rest of the dependencies
+## [1.1.1] - 2022-05-08
+
+-   Upgraded to next major version of hoplite (1.4.16 -> 2.1.2)
+-   bumped the rest of the dependencies
 
 ## [1.1.0] - 2022-01-04
 
@@ -28,7 +30,9 @@ Set kotlin option "jvmTarget" to 13
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-servicematrix/compare/1.1.0...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-servicematrix/compare/1.1.1...HEAD
+
+[1.1.1]: https://github.com/walt-id/waltid-servicematrix/compare/1.1.1...1.1.1
 
 [1.1.0]: https://github.com/walt-id/waltid-servicematrix/compare/1.0.1...1.1.0
 
