@@ -1,7 +1,6 @@
 package id.walt.servicematrix
 
 import com.sksamuel.hoplite.ConfigLoader
-import java.io.File
 
 /**
  * Tag data classes with this interface to use it as configuration for your service
@@ -38,5 +37,5 @@ abstract class BaseService {
      * @see configuration
      */
     protected inline fun <reified T : ServiceConfiguration> fromConfiguration(configurationPath: String) =
-        ConfigLoader().loadConfigOrThrow<T>(File(configurationPath))
+        ConfigLoader().loadConfigOrThrow<T>(configurationPath)
 }
