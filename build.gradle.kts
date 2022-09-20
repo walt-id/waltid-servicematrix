@@ -74,6 +74,12 @@ tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "13"
 }
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(16))
+    }
+}
+
 jacoco.toolVersion = "0.8.8"
 
 tasks.jacocoTestReport {
