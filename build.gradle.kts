@@ -21,8 +21,8 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.7.10")
 
     // Configuration
-    implementation("com.sksamuel.hoplite:hoplite-core:2.1.2")
-    implementation("com.sksamuel.hoplite:hoplite-hocon:2.1.2")
+    implementation("com.sksamuel.hoplite:hoplite-core:2.6.2")
+    implementation("com.sksamuel.hoplite:hoplite-hocon:2.6.2")
 
     // Testing
     testImplementation("io.kotest:kotest-runner-junit5:5.3.0")
