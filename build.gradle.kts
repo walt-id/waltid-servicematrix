@@ -25,8 +25,8 @@ dependencies {
     implementation("com.sksamuel.hoplite:hoplite-hocon:2.6.2")
 
     // Testing
-    testImplementation("io.kotest:kotest-runner-junit5:5.3.0")
-    testImplementation("io.kotest:kotest-assertions-core:5.3.0")
+    testImplementation("io.kotest:kotest-runner-junit5:5.4.2")
+    testImplementation("io.kotest:kotest-assertions-core:5.4.2")
 }
 
 tasks.withType<Test> {
