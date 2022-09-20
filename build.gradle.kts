@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     jacoco
-    kotlin("jvm") version "1.6.21"
+    kotlin("jvm") version "1.7.10"
     `maven-publish`
 }
 
@@ -15,10 +15,10 @@ repositories {
 
 dependencies {
     // Kotlin
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.6.21")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.7.10")
 
     // Reflection
-    implementation("org.jetbrains.kotlin:kotlin-reflect:1.6.21")
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.7.10")
 
     // Configuration
     implementation("com.sksamuel.hoplite:hoplite-core:2.1.2")
