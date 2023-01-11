@@ -4,10 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- Updated Kotlin plugin, Kotlin standard library and Kotlin reflection from 1.6.21 to 1.7.10
-- Updated hoplite-core and hoplite-hocon from 2.1.2 to 2.6.2
-- Updated kotest from 5.3.3 to 5.4.2
-- Fixed compilation with the walt.id SSI Kit
+## [1.1.2] - 2022-09-22
+
+-   Updated Kotlin plugin, Kotlin standard library and Kotlin reflection from 1.6.21 to 1.7.10
+-   Updated hoplite-core and hoplite-hocon from 2.1.2 to 2.6.2
+-   Updated kotest from 5.3.3 to 5.4.2
+-   Fixed compilation with the walt.id SSI Kit
 
 ## [1.1.2] - 2022-05-08
 
@@ -39,7 +41,9 @@ Set kotlin option "jvmTarget" to 13
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-servicematrix/compare/1.1.1...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-servicematrix/compare/1.1.2...HEAD
+
+[1.1.2]: https://github.com/walt-id/waltid-servicematrix/compare/1.1.1...1.1.2
 
 [1.1.1]: https://github.com/walt-id/waltid-servicematrix/compare/1.1.1...1.1.1
 
