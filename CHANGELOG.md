@@ -3,13 +3,11 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
-
-## [1.1.2] - 2022-09-22
-
 -   Updated Kotlin plugin, Kotlin standard library and Kotlin reflection from 1.6.21 to 1.7.10
 -   Updated hoplite-core and hoplite-hocon from 2.1.2 to 2.6.2
 -   Updated kotest from 5.3.3 to 5.4.2
 -   Fixed compilation with the walt.id SSI Kit
+-   Updated error messages
 
 ## [1.1.2] - 2022-05-08
 
