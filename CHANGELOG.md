@@ -9,6 +9,12 @@ All notable changes to this project will be documented in this file.
 - Updated kotest from 5.3.3 to 5.4.2
 - Fixed compilation with the walt.id SSI Kit
 
+## [1.1.2] - 2022-05-08
+
+-   Upgraded to next major version of hoplite (1.4.16 -> 2.1.2)
+-   bumped the rest of the dependencies
+
+
 ## [1.1.1] - 2022-05-08
 
 -   Upgraded to next major version of hoplite (1.4.16 -> 2.1.2)
