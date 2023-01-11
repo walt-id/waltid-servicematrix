@@ -3,6 +3,9 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+
+## [1.1.3] - 2023-01-11
+
 -   Updated Kotlin plugin, Kotlin standard library and Kotlin reflection from 1.6.21 to 1.7.10
 -   Updated hoplite-core and hoplite-hocon from 2.1.2 to 2.6.2
 -   Updated kotest from 5.3.3 to 5.4.2
@@ -13,7 +16,6 @@ All notable changes to this project will be documented in this file.
 
 -   Upgraded to next major version of hoplite (1.4.16 -> 2.1.2)
 -   bumped the rest of the dependencies
-
 
 ## [1.1.1] - 2022-05-08
 
@@ -39,7 +41,9 @@ Set kotlin option "jvmTarget" to 13
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-servicematrix/compare/1.1.2...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-servicematrix/compare/1.1.3...HEAD
+
+[1.1.3]: https://github.com/walt-id/waltid-servicematrix/compare/1.1.2...1.1.3
 
 [1.1.2]: https://github.com/walt-id/waltid-servicematrix/compare/1.1.1...1.1.2
 
