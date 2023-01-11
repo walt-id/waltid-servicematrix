@@ -2,6 +2,7 @@ import id.walt.servicematrix.BaseService
 import id.walt.servicematrix.ServiceMatrix
 import id.walt.servicematrix.ServiceProvider
 import id.walt.servicematrix.ServiceRegistry
+import id.walt.servicematrix.exceptions.MismappedServiceException
 import id.walt.servicematrix.exceptions.NotValidBaseServiceException
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
@@ -37,8 +38,8 @@ class InvalidInstantiationRegistrationTest : StringSpec({
             ServiceMatrix(file1.absolutePath)
         }
     }
-    "Registering InvalidInstantiationTestServiceImpl2 should throw ClassCastException" {
-        shouldThrow<ClassCastException> {
+    "Registering InvalidInstantiationTestServiceImpl2 should throw MismappedServiceException" {
+        shouldThrow<MismappedServiceException> {
             ServiceMatrix(file2.absolutePath)
             val service = InvalidInstantiationTestService.getService()
             service.function1()
