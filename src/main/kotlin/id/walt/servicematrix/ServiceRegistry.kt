@@ -45,7 +45,7 @@ object ServiceRegistry {
      * Example: `getService(MyCustomService::class)`
      */
     inline fun <reified Service : BaseService> getService(serviceClass: KClass<Service>): Service {
-        println("Get service: ${serviceClass.jvmName}")
+        //println("Get service: ${serviceClass.jvmName}")
 
         val lookedupService = services[serviceClass]
         if (lookedupService != null) {
