@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "id.walt.servicematrix"
-version = "1.1.3"
+version = "1.1.4-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -76,7 +76,7 @@ tasks.withType<KotlinCompile> {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(16))
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 
