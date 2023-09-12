@@ -2,12 +2,12 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     jacoco
-    kotlin("jvm") version "1.7.10"
+    kotlin("jvm") version "1.9.10"
     `maven-publish`
 }
 
 group = "id.walt.servicematrix"
-version = "1.1.3"
+version = "1.1.4"
 
 repositories {
     mavenCentral()
@@ -21,12 +21,12 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.7.10")
 
     // Configuration
-    implementation("com.sksamuel.hoplite:hoplite-core:2.6.2")
-    implementation("com.sksamuel.hoplite:hoplite-hocon:2.6.2")
+    implementation("com.sksamuel.hoplite:hoplite-core:2.7.5")
+    implementation("com.sksamuel.hoplite:hoplite-hocon:2.7.5")
 
     // Testing
-    testImplementation("io.kotest:kotest-runner-junit5:5.4.2")
-    testImplementation("io.kotest:kotest-assertions-core:5.4.2")
+    testImplementation("io.kotest:kotest-runner-junit5:5.7.2")
+    testImplementation("io.kotest:kotest-assertions-core:5.7.2")
 }
 
 tasks.withType<Test> {
@@ -40,6 +40,17 @@ publishing {
                 name.set("waltid-servicematrix")
                 description.set("Kotlin/Java library for service registration.")
                 url.set("https://walt.id")
+                licenses {
+                    license {
+                        name.set("The Apache Software License, Version 2.0")
+                        url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
+                    }
+                }
+                scm {
+                    connection.set("scm:git:git@github.com:walt-id/waltid-servicematrix.git")
+                    developerConnection.set("scm:git@github.com:walt-id/waltid-servicematrix.git")
+                    url.set("https://github.com/walt-id/waltid-servicematrix/tree/main")
+                }
             }
             from(components["java"])
         }
