@@ -15,10 +15,10 @@ repositories {
 
 dependencies {
     // Kotlin
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.7.10")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.10")
 
     // Reflection
-    implementation("org.jetbrains.kotlin:kotlin-reflect:1.7.10")
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.9.10")
 
     // Configuration
     implementation("com.sksamuel.hoplite:hoplite-core:2.7.5")
@@ -82,12 +82,12 @@ publishing {
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "13"
+    kotlinOptions.jvmTarget = "17"
 }
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(16))
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 
