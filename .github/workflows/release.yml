@@ -76,11 +76,11 @@ jobs:
         with:
           version: ${{ github.event.inputs.versionName }}
       - name: Commit & Push changes
-        uses: actions-js/push@master
+        uses: actions-js/push@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           message: Automatic relase commits for ${{ github.event.inputs.versionName }}
-          branch: master
+          branch: main
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
