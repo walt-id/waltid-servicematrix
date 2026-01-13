@@ -1,3 +1,12 @@
+## 🚨 Repository Moved
+
+> [!IMPORTANT]
+> This repository is no longer maintained.
+> 
+> All walt.id development continues in the monorepo:
+> 
+## 👉 **https://github.com/walt-id/waltid-identity**
+-----------
 # ServiceMatrix, by walt.id
 
 _Interchange service-implementation & service-configuration at runtime (using dynamic dependency injection), for
